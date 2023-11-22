@@ -1,0 +1,48 @@
+{% extends 'consultas/base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <meta charset="UTF-8">
+    <title>Sistema de consulta UIAF</title>
+    
+<head>
+   <!-- <link rel="stylesheet" href="{% static 'css/resultado_persona.css' %}"> -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <a href="{% url 'vistas' %}?idPersona={{idPersona}}&idpage={{idpage}}"> <!--Excel {{idPersona}}-->
+        <i class="fa fa-file-excel-o" style="font-size:30px"></i>
+    </a><br><br>
+
+
+    {% load render_table from django_tables2 %}
+    <h2>Movimientos en efectivo</h2>
+        {% render_table tefectivo %}
+    <h2>Declaración de renta</h2>
+        {% render_table tdeclaracion %}
+    <h2>Empresas</h2>
+        {% render_table tconfecamaras %}
+    <h2>Notarias</h2>
+        {% render_table tnotarias %}
+    <h2>Transacciones cambiarias</h2>
+        {% render_table tcambiarias %}
+    <h2>Productos</h2>
+        {% render_table productos %}
+    <h2>Reportes de Operación Sospechosa</h2>
+        {% render_table registroROS %}
+    {% if segSocial %}
+        <h2>Seguridad social</h2>
+        {% render_table segSocial %} 
+    {% endif %}    
+        
+    <br><br><br><br><br>
+    
+    <!--Codigo extra para exportar data de las tablas-->
+    
+    
+    
+    {% endblock %}
+</body>
+
+</html>

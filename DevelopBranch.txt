@@ -1,0 +1,1 @@
+Creating develop branch. "features" (each developer) requests will be merged with develop branch. Develop branch works as testing branch. Develop branch will merge with master branch. Adding info.

@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de consulta UIAF</title>
+    <link rel="stylesheet" href="{% static 'css/uiaf.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/static/assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark position-sticky" style="height: 80px; width: 100%;">
+        <div class="container-fluid">
+              <a class="navbar-brand text-light position-sticky margin-left" href="/consultas/">
+              <img src="/static/logo.png" alt="" width="50" height="50" class="d-inline-block align-text-center">
+               Sistema de consulta UIAF</a>
+          </div>
+    </nav>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+            <div id="content", name="content", class="main">
+            {% block content %}
+            {% endblock %}
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="/juegoderoles" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
+        <!--<li><a href="/consultas" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Consultas</span></a></li>-->
+        {% if idpage == 1 %}
+        <li><a href="{% url 'index_ros' page_id=1 ros_id=1 %}" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>ROS 1</span></a></li>
+        <li><a href="{% url 'index'  %}?idpage=1"  class="nav-link scrollto"><i class="bx bx-user"></i> <span>Consultas</span></a></li>
+        <li><a href="{% url 'polls' page_id=1 polls_id=1 %}" class="nav-link scrollto"><i class="bx bx-receipt"></i> <span>Cuest 1</span></a></li>
+        {% elif idpage == 2 %}
+        <li><a href="{% url 'index_ros' page_id=2 ros_id=2 %}" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>ROS 2</span></a></li>
+        <li><a href="{% url 'index'  %}?idpage=2"  class="nav-link scrollto"><i class="bx bx-user"></i> <span>Consultas</span></a></li>
+        <li><a href="{% url 'polls' page_id=2 polls_id=2 %}" class="nav-link scrollto"><i class="bx bx-receipt"></i> <span>Cuest 2</span></a></li>
+        {% elif idpage == 3 %}
+        <li><a href="{% url 'index_ros' page_id=3 ros_id=3 %}" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>ROS 3</span></a></li>
+        <li><a href="{% url 'index'  %}?idpage=3"  class="nav-link scrollto"><i class="bx bx-user"></i> <span>Consultas</span></a></li>
+        <li><a href="{% url 'polls' page_id=3 polls_id=3 %}" class="nav-link scrollto"><i class="bx bx-receipt"></i> <span>Cuest 3</span></a></li>
+        {% else %}
+        <h1> Algo no cuadra, cuentale al admin. Gracias </h1>
+        {% endif %}
+        
+      
+        <!--<li><a href="/solicitud" class="nav-link scrollto"><i class="bx bx-folder-plus"></i> <span>Solicitud de información</span></a></li>-->
+      </ul>
+    </nav><!-- .nav-menu -->
+<!-- Bootstrap y Javascripts -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  <!-- Vendor JS Files -->
+  <script src="/static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/static/assets/vendor/aos/aos.js"></script>
+  <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/static/assets/vendor/typed.js/typed.min.js"></script>
+  <script src="/static/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="/static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/static/assets/js/main.js"></script>
+  <body>
+</html>

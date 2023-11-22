@@ -1,0 +1,58 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/results.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarChart with Results</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    
+</head>
+    <body>
+
+        {% for i in ques_range %}
+        <canvas id="con{{i}}" style="width:100%;max-width:450px;float: left;"></canvas>
+        {% endfor %}
+        
+
+    <script>
+    const barColors = ["#b91d47","#00aba9"];    
+    
+    {% for i in res_list_all %}
+    const resultados{{forloop.counter0}} = [{{i}} * 100, 100 - {{i}} * 100];
+    {% endfor %}
+
+    const charts = {  
+    {% for i in ques_list %}
+    options{{forloop.counter0}} : {
+    type: 'pie',
+    data: {
+      labels: ["Correcto", "Incorrecto"],
+      datasets: [{
+          data:resultados{{forloop.counter0}}, //[{{res_list}} * 100, 100 - {{res_list}} * 100],// 
+          borderWidth: 1,
+          backgroundColor:barColors
+        },
+      ]
+    },
+    options:{
+                title: {
+                display: true,
+                text: "{{i}}"
+                }
+            }
+        },
+  {% endfor %}
+}
+
+let activeCharts = [];
+for (let i = 0; i < Object.keys(charts).length; i++) {
+  activeCharts.push(new Chart(document.getElementById(`con${i}`).getContext('2d'), charts[`options${i}`]));
+}
+                
+    </script>
+</body>
+</html>
+
